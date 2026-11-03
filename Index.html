@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অবিরাম টি স্টোর</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ৩টি প্রধান কালার */
+            --color-indigo: #1E1B4B;    /* ১. রয়েল ইন্ডিগো */
+            --color-emerald: #059669;   /* ২. এমারেল্ড পান্না সবুজ */
+            --color-gold: #F59E0B;      /* ৩. জাফরানি সোনালী */
+            
+            --color-emerald-dark: #047857;
+            --color-gold-dark: #D97706;
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* প্রিমিয়াম হেডার */
+        header {
+            background: linear-gradient(135deg, var(--color-indigo) 0%, #2e2870 60%, #173836 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 20px 65px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(30, 27, 75, 0.15);
+        }
+
+        .header-tag {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--color-gold);
+            color: #FDE68A;
+            padding: 5px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: #E2E8F0;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .header-map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: var(--color-indigo);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .header-map-btn:hover {
+            background: #FDE68A;
+            transform: translateY(-2px);
+        }
+
+        /* কনটেইনার */
+        .container {
+            max-width: 1140px;
+            margin: auto;
+            padding: 45px 20px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--color-indigo);
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* মেন্যু গ্রিড ও কার্ড */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(30, 27, 75, 0.06);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-emerald);
+            box-shadow: 0 15px 30px rgba(5, 150, 105, 0.12);
+        }
+
+        .menu-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .menu-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-indigo);
+        }
+
+        .menu-price {
+            background: #FEF3C7;
+            color: var(--color-gold-dark);
+            border: 1px solid #FCD34D;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            min-height: 48px;
+        }
+
+        .order-btn {
+            background: var(--color-emerald);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .order-btn:hover {
+            background: var(--color-emerald-dark);
+        }
+
+        .order-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* যোগাযোগ ও ম্যাপ হাব */
+        .contact-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            margin-top: 50px;
+            border: 2px solid #E2E8F0;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+        }
+
+        .contact-card h3 {
+            color: var(--color-indigo);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+        }
+
+        .contact-info strong {
+            color: var(--color-indigo);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-map {
+            background: var(--color-gold);
+            color: var(--color-indigo);
+        }
+
+        .btn-map:hover {
+            background: var(--color-gold-dark);
+            color: #fff;
+        }
+
+        .btn-wa {
+            background: var(--color-emerald);
+            color: #ffffff;
+        }
+
+        .btn-wa:hover {
+            background: var(--color-emerald-dark);
+        }
+
+        /* ফ্লোটিং হোয়াটসঅ্যাপ বাটন */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--color-emerald);
+            color: #ffffff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+            text-decoration: none;
+            font-size: 30px;
+            z-index: 99;
+            transition: transform 0.2s;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* ফুটার */
+        footer {
+            background: var(--color-indigo);
+            color: #E2E8F0;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 60px;
+        }
+
+        .admin-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FDE68A;
+            border: 1px solid rgba(253, 230, 138, 0.4);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .admin-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* মডাল পপআপ */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(30, 27, 75, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 90%;
+            max-width: 560px;
+            border-radius: 20px;
+            padding: 30px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px; right: 22px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--color-indigo);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--color-emerald);
+        }
+
+        .btn {
+            padding: 11px 20px;
+            background: var(--color-indigo);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            opacity: 0.92;
+        }
+
+        .btn-emerald { background: var(--color-emerald); }
+        .btn-danger { background: #EF4444; padding: 6px 12px; font-size: 0.85rem; }
+
+        .admin-item {
+            background: #F1F5F9;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার -->
+    <header>
+        <div class="header-tag">🌿 খাঁটি স্বাদ ও আড্ডার নির্ভরযোগ্য ঠিকানা</div>
+        <h1 id="display-shop-name">অবিরাম টি স্টোর</h1>
+        <p id="display-tagline">প্রতি কাপে অবিরাম আড্ডা, অবিরাম প্রশান্তি</p>
+        
+        <a href="#" id="headerMapLink" target="_blank" class="header-map-btn" title="গুগল ম্যাপে লোকেশন দেখুন">
+            📍 <span id="display-address-header">দোকান নং ১২, সেন্ট্রাল রোড, ঢাকা</span> (ম্যাপে দেখুন ↗)
+        </a>
+    </header>
+
+    <!-- কনটেইনার ও মেন্যু -->
+    <div class="container">
+        <div class="section-header">
+            <h2>আমাদের স্পেশাল চা মেন্যু</h2>
+            <p>পছন্দের চা অর্ডার করতে সরাসরি "অর্ডার করুন" বাটনে ক্লিক করুন</p>
+        </div>
+
+        <div class="menu-grid" id="menu-container">
+            <!-- জাভাস্ক্রিপ্ট থেকে মেন্যু আসবে -->
+        </div>
+
+        <!-- সরাসরি যোগাযোগ ও ম্যাপ হাব -->
+        <div class="contact-card">
+            <h3>আমাদের সাথে সরাসরি যোগাযোগ ও লোকেশন</h3>
+            <div class="contact-info">
+                <div>📍 <strong>ঠিকানা:</strong> <span id="display-address-box">দোকান নং ১২, সেন্ট্রাল রোড, ঢাকা</span></div>
+                <div>📞 <strong>হোয়াটসঅ্যাপ সাপোর্ট:</strong> <span id="display-wa-num">017XXXXXXXX</span></div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="#" id="directMapLink" target="_blank" class="btn-link btn-map">
+                    🗺️ গুগল ম্যাপে লাইভ লোকেশন
+                </a>
+                <a href="#" id="directWaLink" target="_blank" class="btn-link btn-wa">
+                    💬 হোয়াটসঅ্যাপে চ্যাট করুন
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
+    <a href="#" id="floatingWaLink" target="_blank" class="floating-wa" title="হোয়াটসঅ্যাপে যোগাযোগ">💬</a>
+
+    <!-- ফুটার -->
+    <footer>
+        <p id="display-footer-text">© ২০২৬ অবিরাম টি স্টোর | আড্ডায় সবসময় আপনাদের সাথে</p>
+        <button class="admin-btn" onclick="openLoginModal()">⚙ অ্যাডমিন প্যানেল</button>
+    </footer>
+
+    <!-- চা অর্ডার করার মডাল -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('orderModal')">&times;</span>
+            <h3 style="color: var(--color-indigo); margin-bottom: 18px; font-size: 1.4rem;">☕ চায়ের অর্ডার দিন</h3>
+
+            <div class="form-group">
+                <label>নির্বাচিত চা:</label>
+                <input type="text" id="orderTeaName" readonly style="background: #F1F5F9; font-weight: bold; color: var(--color-emerald);">
+            </div>
+
+            <div class="form-group">
+                <label>পরিমাণ (কত কাপ?):</label>
+                <input type="number" id="orderQuantity" min="1" value="1">
+            </div>
+
+            <div class="form-group">
+                <label>আপনার নাম:</label>
+                <input type="text" id="orderCustomerName" placeholder="আপনার নাম লিখুন">
+            </div>
+
+            <div class="form-group">
+                <label>ঠিকানা অথবা টেবিল নম্বর:</label>
+                <input type="text" id="orderAddress" placeholder="উদা: ৩ নম্বর টেবিল অথবা বাসার পূর্ণ ঠিকানা">
+            </div>
+
+            <div class="form-group">
+                <label>বিশেষ কোনো নির্দেশ (যদি থাকে):</label>
+                <textarea id="orderNote" rows="2" placeholder="উদা: চিনি কম / কড়া লিকার / আদা বেশি"></textarea>
+            </div>
+
+            <button class="order-btn" style="padding: 13px; font-size: 1.05rem;" onclick="sendOrderToWhatsApp()">
+                📲 হোয়াটসঅ্যাপে অর্ডার পাঠিয়ে দিন
+            </button>
+        </div>
+    </div>
+
+    <!-- অ্যাডমিন লগইন মডাল -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content" style="max-width: 380px; text-align: center;">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <h3 style="margin-bottom: 15px; color: var(--color-indigo);">🔐 অ্যাডমিন লগইন</h3>
+            <div class="form-group">
+                <input type="password" id="adminPasswordInput" placeholder="পাসওয়ার্ড দিন">
+            </div>
+            <button class="btn btn-emerald" style="width: 100%;" onclick="checkLogin()">লগইন করুন</button>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 10px;">ডিফল্ট পাসওয়ার্ড: admin123</p>
+        </div>
+    </div>
+
+    <!-- মূল অ্যাডমিন প্যানেল -->
+    <div id="adminPanelModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('adminPanelModal')">&times;</span>
+            <h2 style="color: var(--color-indigo);">⚙ অ্যাডমিন ড্যাশবোর্ড</h2>
+            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 15px 0;">
+
+            <!-- তথ্য সেটিংস -->
+            <h4 style="color: var(--color-emerald); margin-bottom: 10px;">দোকান ও যোগাযোগ সেটিংস</h4>
+            <div class="form-group">
+                <label>দোকানের নাম:</label>
+                <input type="text" id="editShopName">
+            </div>
+            <div class="form-group">
+                <label>ট্যাগলাইন:</label>
+                <input type="text" id="editTagline">
+            </div>
+            <div class="form-group">
+                <label>দোকানের ঠিকানা:</label>
+                <input type="text" id="editAddress">
+            </div>
+            <div class="form-group">
+                <label>গুগল ম্যাপস লিংক (Google Maps Share Link):</label>
+                <input type="text" id="editMapLink" placeholder="https://maps.app.goo.gl/... বা https://maps.google.com/...">
+                <small style="color: #64748B;">* গুগল ম্যাপে আপনার দোকানের Share লিংকটি এখানে পেস্ট করুন।</small>
+            </div>
+            <div class="form-group">
+                <label>হোয়াটসঅ্যাপ নম্বর (দেশ কোড সহ, যেমন 88017XXXXXXXX):</label>
+                <input type="text" id="editWhatsapp" placeholder="8801700000000">
+            </div>
+
+            <!-- পাসওয়ার্ড পরিবর্তন -->
+            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 20px 0;">
+            <h4 style="color: var(--color-emerald); margin-bottom: 10px;">পাসওয়ার্ড পরিবর্তন</h4>
+            <div class="form-group">
+                <label>নতুন পাসওয়ার্ড:</label>
+                <input type="password" id="editNewPassword" placeholder="পরিবর্তন না করতে চাইলে ফাঁকা রাখুন">
+            </div>
+
+            <!-- নতুন চা যোগ করা -->
+            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 20px 0;">
+            <h4 style="color: var(--color-emerald); margin-bottom: 10px;">নতুন চায়ের আইটেম যোগ করুন</h4>
+            <div class="form-group">
+                <input type="text" id="newItemName" placeholder="চায়ের নাম (উদা: চকলেট চা)">
+            </div>
+            <div class="form-group">
+                <input type="text" id="newItemPrice" placeholder="দাম (উদা: ৩০৳)">
+            </div>
+            <div class="form-group">
+                <textarea id="newItemDesc" placeholder="আইটেমের সংক্ষিপ্ত বর্ণনা" rows="2"></textarea>
+            </div>
+            <button class="btn btn-emerald" onclick="addMenuItem()" style="margin-bottom: 15px; width: 100%;">+ আইটেম যোগ করুন</button>
+
+            <!-- মেন্যু লিস্ট -->
+            <h4 style="color: var(--color-indigo); margin-bottom: 10px;">বর্তমান মেন্যু তালিকা</h4>
+            <div id="adminMenuList"></div>
+
+            <!-- সেভ ও ডাউনলোড বাটন -->
+            <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 20px 0 15px;">
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn btn-emerald" style="flex: 1;" onclick="saveAllChanges()">💾 পরিবর্তন সেভ করুন</button>
+                <button class="btn" style="flex: 1; background: var(--color-indigo);" onclick="downloadUpdatedHTML()">📥 নতুন HTML ফাইল ডাউনলোড</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #64748B; margin-top: 10px; text-align: center;">
+                * "নতুন HTML ফাইল ডাউনলোড" বাটনে ক্লিক করলে পরিবর্তিত তথ্য কোডের ভেতরে স্থায়ীভাবে সেট হয়ে নতুন ফাইল ডাউনলোড হবে।
+            </p>
+        </div>
+    </div>
+
+    <!-- জাভাস্ক্রিপ্ট ডাটা ও ফাংশনালিটি -->
+    <script id="siteDataScript">
+        let siteData = {
+            shopName: "অবিরাম টি স্টোর",
+            tagline: "প্রতি কাপে অবিরাম আড্ডা, অবিরাম প্রশান্তি",
+            address: "দোকান নং ১২, সেন্ট্রাল রোড, ধানমন্ডি, ঢাকা",
+            mapLink: "https://maps.google.com/?q=Dhanmondi,Dhaka",
+            whatsapp: "8801700000000",
+            password: "admin123",
+            menu: [
+                { id: 1, name: "অবিরাম স্পেশাল দুধ চা", price: "১৫৳", desc: "ঘন গরুর দুধ ও প্রিমিয়াম চা পাতার নিখুঁত মিশ্রণ।" },
+                { id: 2, name: "লেমন গ্রাস গ্রিন টি", price: "২০৳", desc: "তাজা লেমনগ্রাস ও আদার সতেজতায় ভরপুর স্বাস্থ্যকর চা।" },
+                { id: 3, name: "জাফরানি কেশর মালাই চা", price: "৩৫৳", desc: "খাঁটি জাফরান ও খাঁটি ক্ষীরের গাঢ় মালাই সমৃদ্ধ চা।" },
+                { id: 4, name: "দারুচিনি স্পাইসি চা", price: "২৫৳", desc: "দারুচিনি, লবঙ্গ আর এলাচের মন চনমনে করা ফ্লেভার।" }
+            ]
+        };
+
+        let selectedTeaToOrder = null;
+
+        function loadStoredData() {
+            const saved = localStorage.getItem('obiram_tea_data');
+            if (saved) {
+                try {
+                    siteData = JSON.parse(saved);
+                } catch(e) {
+                    console.error("ডাটা পড়তে সমস্যা হয়েছে", e);
+                }
+            }
+            renderWebsite();
+        }
+
+        function renderWebsite() {
+            document.getElementById('display-shop-name').innerText = siteData.shopName;
+            document.getElementById('display-tagline').innerText = siteData.tagline;
+            document.getElementById('display-address-header').innerText = siteData.address;
+            document.getElementById('display-address-box').innerText = siteData.address;
+            document.getElementById('display-wa-num').innerText = siteData.whatsapp;
+
+            // গুগল ম্যাপস লিংক সেট
+            document.getElementById('headerMapLink').href = siteData.mapLink;
+            document.getElementById('directMapLink').href = siteData.mapLink;
+
+            // হোয়াটসঅ্যাপ লিংক সেট
+            const directWa = `https://wa.me/${siteData.whatsapp}?text=${encodeURIComponent("হ্যালো! অবিরাম টি স্টোর সম্পর্কে জানতে চাচ্ছি।")}`;
+            document.getElementById('directWaLink').href = directWa;
+            document.getElementById('floatingWaLink').href = directWa;
+
+            // মেন্যু রেন্ডারিং
+            const menuContainer = document.getElementById('menu-container');
+            menuContainer.innerHTML = '';
+            siteData.menu.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="menu-top">
+                            <span class="menu-title">☕ ${item.name}</span>
+                            <span class="menu-price">${item.price}</span>
+                        </div>
+                        <p class="menu-desc">${item.desc}</p>
+                    </div>
+                    <button class="order-btn" onclick="openOrderModal('${item.name}', '${item.price}')">
+                        🛒 অর্ডার করুন
+                    </button>
+                `;
+                menuContainer.appendChild(card);
+            });
+        }
+
+        function openOrderModal(teaName, teaPrice) {
+            selectedTeaToOrder = { name: teaName, price: teaPrice };
+            document.getElementById('orderTeaName').value = `${teaName} (${teaPrice})`;
+            document.getElementById('orderQuantity').value = "1";
+            document.getElementById('orderCustomerName').value = "";
+            document.getElementById('orderAddress').value = "";
+            document.getElementById('orderNote').value = "";
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function sendOrderToWhatsApp() {
+            const qty = document.getElementById('orderQuantity').value || 1;
+            const name = document.getElementById('orderCustomerName').value.trim();
+            const address = document.getElementById('orderAddress').value.trim();
+            const note = document.getElementById('orderNote').value.trim();
+
+            if (!name || !address) {
+                alert("দয়া করে আপনার নাম এবং ঠিকানা/টেবিল নম্বর দিন!");
+                return;
+            }
+
+            const message = 
+`*☕ অবিরাম টি স্টোর - নতুন অর্ডার!*
+━━━━━━━━━━━━━━━━━━
+*আইটেম:* ${selectedTeaToOrder.name}
+*দাম:* ${selectedTeaToOrder.price}
+*পরিমাণ:* ${qty} কাপ
+━━━━━━━━━━━━━━━━━━
+*গ্রাহকের নাম:* ${name}
+*ঠিকানা / টেবিল:* ${address}
+*বিশেষ নির্দেশ:* ${note || 'কোনো নির্দেশ নেই'}
+━━━━━━━━━━━━━━━━━━
+_ধন্যবাদ! অনুগ্রহ করে অর্ডারটি কনফার্ম করুন।_`;
+
+            const waUrl = `https://wa.me/${siteData.whatsapp}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+            closeModal('orderModal');
+        }
+
+        function renderAdminPanel() {
+            document.getElementById('editShopName').value = siteData.shopName;
+            document.getElementById('editTagline').value = siteData.tagline;
+            document.getElementById('editAddress').value = siteData.address;
+            document.getElementById('editMapLink').value = siteData.mapLink || '';
+            document.getElementById('editWhatsapp').value = siteData.whatsapp;
+            document.getElementById('editNewPassword').value = '';
+
+            const list = document.getElementById('adminMenuList');
+            list.innerHTML = '';
+            siteData.menu.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'admin-item';
+                row.innerHTML = `
+                    <div><strong>${item.name}</strong> (${item.price})</div>
+                    <button class="btn btn-danger" onclick="deleteMenuItem(${item.id})">মুছুন</button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        function checkLogin() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if (pass === siteData.password) {
+                closeModal('loginModal');
+                document.getElementById('adminPasswordInput').value = '';
+                renderAdminPanel();
+                document.getElementById('adminPanelModal').style.display = 'flex';
+            } else {
+                alert("ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।");
+            }
+        }
+
+        function addMenuItem() {
+            const name = document.getElementById('newItemName').value.trim();
+            const price = document.getElementById('newItemPrice').value.trim();
+            const desc = document.getElementById('newItemDesc').value.trim();
+
+            if (!name || !price) {
+                alert("আইটেমের নাম ও দাম অবশ্যই পূরণ করুন!");
+                return;
+            }
+
+            siteData.menu.push({
+                id: Date.now(),
+                name: name,
+                price: price,
+                desc: desc || "তাজা ও অত্যন্ত সুস্বাদু।"
+            });
+
+            document.getElementById('newItemName').value = '';
+            document.getElementById('newItemPrice').value = '';
+            document.getElementById('newItemDesc').value = '';
+            renderAdminPanel();
+        }
+
+        function deleteMenuItem(id) {
+            siteData.menu = siteData.menu.filter(item => item.id !== id);
+            renderAdminPanel();
+        }
+
+        function saveAllChanges() {
+            siteData.shopName = document.getElementById('editShopName').value.trim() || siteData.shopName;
+            siteData.tagline = document.getElementById('editTagline').value.trim() || siteData.tagline;
+            siteData.address = document.getElementById('editAddress').value.trim() || siteData.address;
+            siteData.mapLink = document.getElementById('editMapLink').value.trim() || siteData.mapLink;
+            siteData.whatsapp = document.getElementById('editWhatsapp').value.trim().replace(/[^0-9]/g, '') || siteData.whatsapp;
+
+            const newPass = document.getElementById('editNewPassword').value.trim();
+            if (newPass) siteData.password = newPass;
+
+            localStorage.setItem('obiram_tea_data', JSON.stringify(siteData));
+            renderWebsite();
+            alert("সব তথ্য সফলভাবে আপডেট হয়েছে!");
+            closeModal('adminPanelModal');
+        }
+
+        function downloadUpdatedHTML() {
+            saveAllChanges();
+
+            let fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const dataRegex = /let siteData = \{[\s\S]*?\};/;
+            const updatedDataString = `let siteData = ${JSON.stringify(siteData, null, 4)};`;
+            fullHtml = fullHtml.replace(dataRegex, updatedDataString);
+
+            const blob = new Blob([fullHtml], { type: 'text/html' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            if (e.target.className === 'modal') {
+                e.target.style.display = 'none';
+            }
+        };
+
+        // শুরুতে লোড হবে
+        loadStoredData();
+    </script>
+</body>
+</html>
